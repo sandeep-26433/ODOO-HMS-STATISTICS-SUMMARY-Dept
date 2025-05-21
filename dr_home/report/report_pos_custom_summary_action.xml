@@ -1,0 +1,12 @@
+<odoo>
+  <record id="action_print_pos_custom_summary" model="ir.actions.report">
+    <field name="name">POS Custom Invoice</field>
+    <field name="model">pos.order</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">dr_home.report_pos_custom_summary</field>
+    <field name="report_file">dr_home.report_pos_custom_summary</field>
+    <field name="binding_model_id" ref="point_of_sale.model_pos_order"/>
+    <field name="binding_type">report</field>
+    <field name="print_report_name">'POS_Custom_Invoice_%s' % object.name</field>
+  </record>
+</odoo>

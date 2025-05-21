@@ -1,0 +1,156 @@
+<odoo>
+  <template id="report_pos_custom_summary">
+    <t t-call="web.html_container">
+      <t t-call="web.external_layout_standard">
+        <div class="page">
+          <t t-foreach="docs" t-as="doc">
+
+            <div style="text-align: right;">
+              <div><strong>GST NO:</strong> 36AACCO3581H1ZD</div>
+              <div>
+                <strong>Date:</strong>
+                <t t-esc="doc.order_date.strftime('%d-%m-%Y')" />
+              </div>
+            </div>
+            <!-- Left empty space to help center -->
+
+            <!-- Centered Heading -->
+            <div style="text-align: center;">
+              <h2 style="font-weight: bold; font-size: 26px;">Pharmacy Billing</h2>
+            </div>
+
+
+            <!-- <h2 style="text-align: center; font-weight: bold; margin-bottom: 10px;">Pharmacy
+            Billing</h2> -->
+
+            <!-- Patient Details Row (Fixed structure) -->
+
+            <div class="oe_structure" style="flex-grow: 1; margin-top:10px;margin-bottom:10px;">
+              <table class="table o_table table-borderless"
+                style="border-collapse: collapse; width: 100%; table-layout: fixed; border: none; margin:0;padding:0;font-size:18px">
+                <tbody>
+                  <tr>
+                    <td
+                      style="padding: 2px 3px; vertical-align: top;">
+                      <strong>UHID:</strong>
+                      <t t-esc="doc.patient_id" />
+                    </td>
+
+
+                    <t t-if="doc.invoice_number">
+                      <td
+                        style="padding: 2px 3px; vertical-align: top;">
+                        <strong>Invoice No:</strong>
+                        <t t-esc="doc.invoice_number" />
+                      </td>
+                    </t>
+                  </tr>
+
+
+                  <tr style="line-height: 1; vertical-align: top;">
+                    <td
+                      style="padding: 2px 3px; vertical-align: top;">
+                      <strong>Name:</strong>
+                  <t t-esc="doc.customer" /> ( <t t-esc="doc.patient_age" />
+                      / <t
+                        t-esc="doc.gender" /> ) </td>
+
+
+                  </tr>
+
+                  <tr  style="line-height: 1; vertical-align: top;">
+
+                    <td  style="padding: 2px 3px; vertical-align: top;">
+                      <strong>Doctor Name:</strong>
+                      <t t-esc="doc.consultation_doctor"></t>
+                    </td>
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+
+            <!-- Medicines Table -->
+            <table class="table o_table table-borderless"
+              style="width: 100%; border-collapse: collapse; table-layout: fixed; margin-bottom: 10px;font-size:17px;">
+              <thead>
+
+                <tr style="border-bottom: 1px solid #000;">
+                  <th style="text-align: left; width:10%;">S.No</th>
+                  <th style="text-align: left; width:40%;">Medicine</th>
+                  <th style="text-align: left; width:20%;">Quantity</th>
+                  <th style="text-align: left;width:15%;">Unit Price</th>
+                  <th style="text-align: left; width:15%;">Amount</th>
+                </tr>
+
+
+              </thead>
+              <tbody style="font-size:14px"> 
+
+
+                <tr style="font-size:14px">
+                  <t t-set="sno" t-value="1" />
+                  <t t-foreach="doc.line_ids" t-as="line">
+                    <tr>
+                      <td style="width:10%;line-height:1;">
+                        <t t-esc="sno" />
+                      </td>
+                      <td style="width:40%;line-height:1;">
+                        <t t-esc="line.product_name" />
+                      </td>
+                      <td style="text-align: left;width:10%; line-height:1;">
+                        <t t-esc="line.qty" />
+                      </td>
+                      <td style="text-align: left; width:20%; line-height:1;">₹ <t
+                          t-esc="line.price_unit" /></td>
+                      <td style="text-align: left;width:20%; line-height:1;">₹ <t
+                          t-esc="line.price_subtotal" /></td>
+                    </tr>
+                    <t t-set="sno" t-value="sno + 1" />
+                  </t>
+
+
+                </tr>
+
+
+              </tbody>
+            </table>
+
+
+            <!-- Total -->
+            <p
+              style="text-align: right; font-weight: bold;font-size:20px; margin-top: 10px;margin-right:50px;">
+              Total: ₹ <bold>
+                <t
+                  t-esc="doc.total_amount" />
+
+              </bold>
+            </p>
+
+
+           
+            <t t-if="doc.amount_due">
+
+              <p style="text-align:right">
+                <strong>Amount Due:₹ </strong>
+                <t t-esc="doc.amount_due"></t>
+              </p>
+            </t>
+
+
+          </t>
+          <div style="position: relative; bottom: 20px; width: 100%;">
+            <p style="text-align: center; font-style: italic; font-size: 14px;">
+              * Do not rely solely on medicines. Take rest and eat healthy.
+            </p>
+            <p style="text-align: center; font-style: italic; font-size: 16px; font-weight: bold;">
+              * Get well soon
+            </p>
+          </div>
+        </div>
+      </t>
+    </t>
+  </template>
+</odoo>
