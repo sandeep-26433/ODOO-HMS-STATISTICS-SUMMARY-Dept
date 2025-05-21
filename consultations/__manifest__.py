@@ -1,0 +1,21 @@
+{
+    'name': 'Appointment Booking',
+    'version': '1.0',
+    'summary': 'Manage Patient Appointments',
+    'sequence': 10,
+    'category': 'Healthcare',
+    'depends': ['base', 'contacts', 'stock'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/appointment_booking.xml',
+        'views/vendor_management.xml',
+        'views/consultation_doctor.xml',
+        'data/appointment_op_number_sequence.xml',  # Ensure correct path
+        'views/appointment_statistics_wizard_views.xml',
+        'views/appointment_statistics_actions.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}
+

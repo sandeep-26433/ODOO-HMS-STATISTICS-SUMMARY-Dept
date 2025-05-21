@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_appointment_statistics_wizard_form" model="ir.ui.view">
+        <field name="name">appointment.statistics.wizard.form</field>
+        <field name="model">appointment.statistics.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Appointment Statistics">
+                <group>
+                    <field name="from_date" />
+                    <field name="to_date" />
+                </group>
+                <footer>
+                    <button string="Calculate" type="object" name="calculate_statistics"
+                        class="btn-primary" />
+                    <button string="Export Excel" type="object" name="export_excel"
+                        class="btn-secondary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+                <group>
+                    <field name="total_count" readonly="1"/>
+                    <field name="total_new_patients" readonly="1"/>
+                    <field name="total_old_patients" readonly="1"/>
+                </group>
+                <group>
+                    <field name="line_ids" widget="one2many_list">
+                        <list>
+                            <field name="date" style="width: 150px;"/>
+                            <field name="male_count" optional="hide" />
+                            <field name="female_count" optional="hide" />
+                            <field name="others_count" optional="hide" />
+                            <field name="new_patient_count" optional="hide" />
+                            <field name="old_patient_count" optional="hide" />
+                            <field name="age_0_16_count" optional="hide" />
+                            <field name="age_17_50_count" optional="hide" />
+                            <field name="age_51_plus_count" optional="hide" />
+                            <field name="total_count" style="width: 150px;" />
+
+
+                        </list>
+                    </field>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

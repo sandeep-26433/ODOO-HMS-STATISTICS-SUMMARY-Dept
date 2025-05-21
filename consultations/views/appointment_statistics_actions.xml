@@ -1,0 +1,13 @@
+<odoo>
+    <record id="action_appointment_statistics_wizard" model="ir.actions.act_window">
+        <field name="name">Appointment Statistics</field>
+        <field name="res_model">appointment.statistics.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_appointment_statistics"
+        name="Appointment Statistics"
+        parent="appointment_booking_root_menu"
+        action="action_appointment_statistics_wizard"/>
+</odoo>
