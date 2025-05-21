@@ -1,0 +1,58 @@
+<odoo>
+    <template id="purchase_report_template">
+      <t t-call="web.html_container">
+        <t t-call="web.external_layout_standard">
+          <t t-foreach="docs" t-as="doc">
+            <div class="page">
+              <h2 class="text-center" style="margin-bottom: 15px;">Purchase Report</h2>
+              <table class="table table-borderless">
+                <tr>
+                  <td><strong>Invoice Number:</strong> <t t-esc="doc.invoice_number"/></td>
+                  <td><strong>Purchase Date:</strong> <t t-esc="doc.purchase_date.strftime('%d/%m/%Y') if doc.purchase_date else ''"/></td>
+                </tr>
+                <tr>
+                  <td><strong>Vendor:</strong> <t t-esc="doc.vendor_name"/></td>
+                  
+                </tr>
+              </table>
+  
+              <h4 style="margin-top: 17px;font-weight:bold;">List of Products</h4>
+              <table class="table o_table table-borderless" style="width:100%;">
+                <thead>
+                  <tr>
+                    <th>S.NO</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Cost</th>
+                    <th>Lot Number</th>
+                    <th>Expiry Date</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-set="counter" t-value="1" />
+                  <t t-foreach="doc.line_ids" t-as="line">
+                    <tr>
+                      <td><t t-esc="counter" /></td>
+                      <td><t t-esc="line.product_name"/></td>
+                      <td><t t-esc="line.quantity"/></td>
+                      <td><t t-esc="line.cost"/></td>
+                      <td><t t-esc="line.lot_number"/></td>
+                      <td><t t-esc="line.expiry_date.strftime('%d/%m/%Y') if line.expiry_date else ''"/></td>
+                      <td><t t-esc="line.total"/></td>
+                    </tr>
+                    <t t-set="counter" t-value="counter + 1" />
+                  </t>
+                </tbody>
+              </table>
+              <div  style="text-align: right; font-weight: bold;font-size:17px; margin-top: 10px;margin-right:50px;">
+                <strong> Net Total:</strong> <t t-esc="doc.overall_total"/>
+
+              </div>
+            </div>
+          </t>
+        </t>
+      </t>
+    </template>
+  </odoo>
+  

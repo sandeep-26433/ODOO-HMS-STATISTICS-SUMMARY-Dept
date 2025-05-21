@@ -1,0 +1,47 @@
+<odoo>
+    <!-- Define the action for the Vendors model -->
+    <record id="pharmacy_action_vendor" model="ir.actions.act_window">
+        <field name="name">Vendors</field>
+        <field name="res_model">vendors</field>
+        <field name="view_mode">list,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Define the menu item for Vendors -->
+    <menuitem id="pharmacy_management_menu" name="Pharmacy Management"/>
+
+    <menuitem id="menu_vendor_management" parent="pharmacy_management_menu" name="Vendors" action="pharmacy_action_vendor" sequence="3"/>
+    
+    <!-- Vendor Form View -->
+    <record id="view_vendor_form" model="ir.ui.view">
+        <field name="name">vendor.form</field>
+        <field name="model">vendors</field>
+        <field name="arch" type="xml">
+            <form string="Vendor">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1" />
+                        <field name="patient_id" />
+                        <field name="phone" />
+                        <field name="email" />
+                        <field name="address" />
+                        <field name="gst_number" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vendor list View -->
+    <record id="view_vendor_list" model="ir.ui.view">
+        <field name="name">vendor.list</field>
+        <field name="model">vendors</field>
+        <field name="arch" type="xml">
+            <list string="Vendors">
+                <field name="name" />
+                <field name="phone" />
+                <field name="gst_number" />
+            </list>
+        </field>
+    </record>
+</odoo>

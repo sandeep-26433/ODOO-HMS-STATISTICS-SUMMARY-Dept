@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vendor_user,access_vendor_user,model_vendors,base.group_user,1,1,1,1
+access_vendor_manager,access_vendor_manager,model_vendors,base.group_system,1,1,1,1
+access_purchase_management,access.purchase.management,model_purchase_management,,1,1,1,1
+access_purchase_management_line,purchase.management.line,model_purchase_management_line,,1,1,1,1
+access_report_purchase_management,report.purchase.management,model_report_purchase_management,,1,1,1,1
+access_report_purchase_management_line,report.purchase.management.line,model_report_purchase_management_line,,1,1,1,1
